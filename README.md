@@ -1,94 +1,68 @@
-# My Python Learning Journey
-import random;
-import sys;
+# My Python Learning Journey: Random Price Generator
 
-num = int(sys.argv[1])
+Overview
+This project contains Python scripts demonstrating two methods to generate random prices:
 
+    Using Python's built-in random library with a simple loop.
 
-def generate_random_number(parameters):
-    
-    for counter in range(parameters):
-        print(f"£{round(random.uniform(0, 100), 2)}")
+    Using the optimized NumPy library for fast random number generation.
 
+The goal is to compare their performance and understand the differences. This is the perfect starting point because:
 
+    It teaches about performance measurement.
+    It introduces different Python Libraries
+    It helps to build good habits around benchmarking.
 
-print( generate_random_number(num))
+Requirements
+    Python 3.12.2 installed
 
+    NumPy library (only for the NumPy-based generator)
 
+Install NumPy with:
 
+    pip install numpy
 
+How to Run
+    Run the main script with a command-line argument specifying how many prices to generate:
 
-import random
+For Example:
+    python main.py 1000
+This will generate 1000 random prices using both methods and report how long each one took.
 
-import sys
+Project Structure
+    price_generator_for1.py — Loop-based generator using Python’s random.
 
-num = int(sys.argv[1])
+    price_generator_for2.py — NumPy-based generator.
 
+    main.py — Runs both generators, measures execution time, and compares speed.
 
-def generate_random_price(num):
+Sample Output
+You should see output like this:
 
-    for i in range(num):
+    Loop-based approach took: 0:00:03.456789
 
-        price = round(random.uniform(0, 100), 2)
-        print(f"£{price: .2f}")
+    NumPy-based approach took: 0:00:00.123456
 
+    NumPy-based approach is faster
 
-generate_random_price(num)
+Notes
+    The generate_random_number() function in price_generator_for1.py currently returns prices formatted with "£", suitable for display.
 
+    The NumPy generator returns raw floats, which can be formatted as needed.
 
+    Timing is done in the main script using a helper function to keep code clean.
 
+    The if _name_ == "_main_": structuring ensures proper script execution.
 
-# import "datetime" library
-from datetime import datetime;
+Observation
+The Loop script runs more efficiently if
+    the output is simply added to a list or array.
+    return is used instead of print for the output.
+This also means the script is more adaptable/versatile
 
-# import for access to terminal system
-import sys;
-
-
-# import functions I need
-from price_generator_for1 import generate_random_number
-from price_generator_for2 import generate_random_price
-
-# get the first variable from command line
-num = int(sys.argv[1])
-
-# store current time in variable
-start_time = datetime.now()
-
-# run function
-generate_random_number(num)
-
-# store finished time in variable
-end_time = datetime.now()
-
-
-
-
-# store current time in variable
-start_time_two = datetime.now()
-
-# run functions
-generate_random_price(num)
-
-# store finished time in variable
-end_time_two = datetime.now()
-
-
-
-# calculate the difference
-result_one = end_time - start_time
-result_two = end_time_two - start_time_two
-
-# calculate the difference
-print(end_time - start_time)
-print(end_time_two - start_time_two)
-
-
-
-# use if statement to check which one is faster...
-
-if result_one > result_two:
-    print("Module 2 is faster")
-
-if result_two > result_one:
-    print("Module 1 is faster")
+Possible Next Steps
+    Add more complexity - generate price curves, trends, scalability, seasonality, volatility
+    Data Structures - store prices in pandas DataFrames
+    Forward curves - build simple price curves
+    Basic valuation - calculate present values, mark-to-market
+    File I/O - read/write prices to csv/excel files

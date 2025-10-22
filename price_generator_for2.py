@@ -1,19 +1,16 @@
-import random
-import sys
 
 
+import numpy as np
 
-num = int(sys.argv[1])
+def generate_random_price_numpy(num_prices):
 
+    """
+    generate an array of random prices using NumPy
+    Returns a list prices rounded to 2 decimal places
+    """
+    
+    prices = np.random.uniform(0,100,num_prices) #Generate all in one cal
+    rounded_prices = np.round(prices, 2) #Round prices to 2 decimals
+    
+    return rounded_prices.tolist() #Convert NumPy array to Python list
 
-def generate_random_price(num):
-
-
-
-    for i in range(num):
-
-        price = round(random.uniform(0, 100), 2)
-        print(f"£{price: .2f}")
-
-
-generate_random_price(num)

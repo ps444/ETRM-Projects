@@ -5,8 +5,11 @@ import sys;
 num = int(sys.argv[1])
 
 def generate_random_number(parameters):
-    
-    for counter in range(parameters):
-        print(f"£{round(random.uniform(0, 100), 2)}")
 
-print( generate_random_number(num))
+    prices = []
+
+    for counter in range(parameters):
+        prices.append(f"£{round(random.uniform(0, 100), 2)}")
+
+    return prices
+
