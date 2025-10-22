@@ -71,6 +71,7 @@ Observations
     return is used instead of print for the output.
     This also means the script is more adaptable/versatile
 
+
 Possible Next Steps
 
     Add more complexity - generate price curves, trends, scalability, seasonality, volatility
@@ -78,3 +79,18 @@ Possible Next Steps
     Forward curves - build simple price curves
     Basic valuation - calculate present values, mark-to-market
     File I/O - read/write prices to csv/excel files
+
+Next Steps
+    
+    Modify script to accept the following input:
+    
+    - Date: "2023-10-29"
+    - Granularity: "hourly"(h) or "half-hourly"(hh)
+    - Location: "UK" or "France"
+    - Daylight Saving Time (DST)
+
+    Modify script to simulate real-world patterns
+
+    - Seasonality: Prices are generally higher in winter than in summer, for European countries
+    - Daily Profile: Prices are higher during peak hours (e.g., morning and evening) and lower overnight
+    - Weekly Profile: Weekday prices are typically higher than weekend prices.
