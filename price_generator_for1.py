@@ -1,8 +1,6 @@
 import random
-import sys
 
 
-num = int(sys.argv[1])
 
 def generate_random_number(parameters):
 

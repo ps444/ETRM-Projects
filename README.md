@@ -62,7 +62,9 @@ The NumPy generator returns raw floats, which can be formatted as needed.
 
 Timing is done in the main script using a helper function to keep code clean.
 
-The if _name_ == "_main_": structuring ensures proper script execution.
+The if _name_ == "_main_": structuring ensures proper script execution by.
+
+
 
 Observations
 
@@ -83,7 +85,7 @@ Possible Next Steps
 Next Steps
     
     Modify script to accept the following input:
-    
+
     - Date: "2023-10-29"
     - Granularity: "hourly"(h) or "half-hourly"(hh)
     - Location: "UK" or "France"
@@ -92,5 +94,57 @@ Next Steps
     Modify script to simulate real-world patterns
 
     - Seasonality: Prices are generally higher in winter than in summer, for European countries
+        There are two main seasons (pricing groups):
+            
+            Winter (December-February) - Prices are generally higher
+            Summer (June-August) - Prices are generally lower
+        
     - Daily Profile: Prices are higher during peak hours (e.g., morning and evening) and lower overnight
+        There are four main price profiles during the day:
+
+            Morning Peak (7am-9am) - High Demand>High Prices
+            Daytime (9am-5pm) - Medium Prices
+            Evening Peak (5pm-8pm) - High Demand>High Prices
+            Night Time (11pm-6am) Low Prices
+
     - Weekly Profile: Weekday prices are typically higher than weekend prices.
+        There are two main weekly profiles
+
+            Weekdays (Mondays-Fridays) - Higher Demand>Higher Prices
+            Weekends (Saturday-Sunday) -Lower Demand>Lower Prices
+
+Next Steps Solution  
+
+    Step 1: Modify input argument statements
+
+    - Replace num = int(sys.arg[1]) with three separate inputs for date, daily profile/granularity, location
+    - Delete import sys statements from modules price_generator_for1.py
+    - Delete num = int(sys.argv[1]) from modules price_generator_for1.py, price_generator_for2.py
+
+    Step 2: Add granularity logic
+    - Calculate the number of periods based on "hourly" settlement periods
+    - Hourly = 24 settlement periods ("h")
+
+    Step 3: Print Output in the format 
+    - Date: 2024-10-27
+    - Granularity: half-hourly
+    - Date: UK
+
+    Observation
+    - Above steps arrived at through iterative errors
+    - Interstingly, at the end of these steps, price_generator_for1.py was faster.
+
+    Step 4: Generate some prices based on settlement periods to test that prices are actually being returned
+
+    Step 5: Add DST function
+
+    Step 6: Add script for real-world prices
+    - Create new function: generate_realistic_prices()
+    
+    Approach: Use Multipliers
+        1) Start with a Base Price - Arbitrarily chosen here
+        2) Apply Seasonal Multiplier - to calculate for the season
+        3) Apply time-of-day Multiplier - to calculate for the day
+        4) Apply day-of-week Multiplier - to calculate for the week
+        5) Apply Randomness Multiplier - to simulate randomness
+        
